@@ -1,0 +1,439 @@
+  *{
+	  font-family:微軟正黑體;
+	/*  border: solid 1px ;	  */
+	} 
+
+	a{
+		color: #8b8c8e;		
+	}
+	
+
+	p{
+		font-size: 13px;
+
+	}
+
+	h5{
+		font-family:微軟正黑體;
+		color: #939496;
+	}
+
+	#Insufficient_balance{
+		color: red;
+		visibility: hidden;
+	}
+	
+
+	#Interest_number{
+		font-size: 30px;
+	}	
+
+	.li_icon{
+		margin-left:20px;
+	}
+
+	.wallet_card{
+		display:flex;
+    	align-items:center;
+    	justify-content:center;
+	}
+
+	.distant{
+		margin: 10px;
+		margin-top:100px; 
+		border: 0px;				
+	}
+
+	
+	.info{		
+		font-size: 12px;	
+		color: #7c7a7a;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	.info_propose{
+		width: 100px;
+		overflow: auto;
+		font-size: 12px;	
+		color: #7c7a7a;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	.investor_address{
+		width: 100px;
+		overflow: auto;
+		font-size: 12px;	
+		color: #7c7a7a;		
+	}
+	
+
+	.distant_01{
+		margin: 10px;
+		margin-top:100px; 		
+	}
+
+	.shad{
+		border-radius: 50%;	
+		box-shadow: 0px 0px 10px #13c3b0;				
+	}
+
+	.shad_01{
+		border-radius: 50%;	
+		box-shadow: 0px 0px 10px #5c9dff;				
+	}
+
+	.shad_02{
+		border-radius: 50%;	
+		box-shadow: 0px 0px 10px #f4b053;				
+	}
+
+	
+
+	.ETH-LOGO{
+		width: 100px;
+		height:100px;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.25);	
+		border-radius:50% ;
+		background-image: url(https://upload.cc/i1/2019/12/09/yruAaP.png); 
+		overflow: cover;
+		margin: 30px;
+		transition: 0.5s
+
+	}
+
+	.ETH-LOGO:hover{		
+		box-shadow: 0px 0px 30px rgba(98, 126, 234,300);	
+	}
+
+	.column{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	.card_style_01{
+		width: 18rem; 
+		padding: 15px; 
+		background: #e5e5e5; 
+		border: solid 0px; 
+		margin:0 auto;	
+		margin-top:30px; 
+		margin-bottom:30px; 
+		font-family:微軟正黑體;
+	}
+
+	.card_p{		
+		color: #747579;
+		font-weight:bold;
+		font-size: 30px;
+
+	}
+
+	.user_info{	
+		border-radius: 5px;	
+		background-color: #f8f9fa;
+		padding: 30px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		box-shadow: 3px 3px 3px rgba(0%,0%,0%,0.10);
+
+	}
+
+	.ready_table{
+		border-radius: 8px; 
+		background-color: #ebecf4;
+		padding-top: 13px; 
+		box-shadow: 3px 3px 3px rgba(0%,0%,0%,0.10);
+	}
+
+	
+
+	.subtitle{
+		font-family:微軟正黑體;
+		font-size: 15px;
+
+	}
+
+	.table_distant{
+		margin-top: 30px;
+		margin-bottom: 30px;
+		color: #747579;
+		font-family:微軟正黑體;
+
+	}	
+
+	.ETH_price{
+		color: #747579;
+		font-family:微軟正黑體;
+		font-size: 13px;
+	}
+
+	.intro{
+		width: 210px;
+	}
+
+	.alert_info{
+		box-shadow: 3px 3px 3px rgba(0%,0%,0%,0.10);
+		border: solid 0px;
+	}
+
+
+	.foot_font{
+		font-size: 10px;
+		color: #e5e5e5;		
+	}
+	
+
+	.foot_time{
+		margin-left:10px;
+		margin-right:10px; 
+	}
+	
+	.revert{
+		margin-left: 15px;
+		margin: 10px;
+		color: #975057;
+	}
+
+	.btn_dis{
+		margin-top: 10px;
+		margin:10px
+		padding:12px;
+		font-size: 8px;		
+	}
+
+	.guide{				
+		border-radius: 5px;
+		background-color: #cce5ff;
+		color: #5f8dbe;
+		margin: 15px;
+		padding: 20px;
+
+	}
+
+	.connect{
+		width: 10px;
+		height: 10px;
+		border-radius: 50%; 
+		background-color: #f45555;
+		margin-right: 5px;
+		margin-left: 20px; 					 
+	}
+
+	.connect_P{
+		font-size: 12px;	
+		color: #7c7a7a;
+	}
+
+	.quite_info{
+		border-radius: 5px;
+		background-color: #f8d7da;
+		padding: 10px;		
+		margin-right:5px;
+		margin-left:5px;
+		box-shadow: 3px 3px 3px rgba(0%,0%,0%,0.10);
+
+	}	
+
+	.ready_table{
+		margin-left: 22px;
+		width: 400px;
+	}
+
+	/*退出的可見度*/
+
+	.sible {
+  		visibility: hidden;
+	}
+
+	.investor_info{
+		visibility: hidden;
+	}
+
+	.none_user{
+		visibility: visible;
+	}
+/*
+	.redundant{
+		display: none;
+	}*/
+
+	/*.no_duplication{
+		display: none;
+	}
+*/
+
+	.loading {
+	  position: fixed;	  
+	  height: 200px;	  
+	  width: 200px;
+	  top:50%;
+      left:50%; 
+      margin-left:-25px;
+      margin-top:-25px;	    
+	}
+
+
+
+	/*載入動畫*/
+
+	.loader{
+		  margin: 0 0 2em;
+		  height: 100px;
+		  width: 20%;
+		  text-align: center;
+		  padding: 1em;
+		  margin: 0 auto 1em;
+		  display: inline-block;
+		  vertical-align: top;
+	}	
+
+	/*
+	  Set the color of the icon
+	*/
+	svg path,
+	svg rect{
+	  fill: #627eea;
+	}
+
+
+
+
+@media (max-width: 320px) {
+
+	.info{
+		width: 100px;
+		overflow: auto;	
+	}
+
+	.ready_table{		
+		width: 100px;			
+	}
+
+
+}	
+
+
+@media (max-width: 360px) {
+
+	.ready_table{		
+		width: 80px;
+		margin-left: 0px;		
+	}
+
+
+}	
+
+
+@media (max-width: 375px) {
+
+	.info{
+		width: 230px;
+		overflow: auto;	
+	}
+
+	.table_distant{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: #747579;
+		font-family:微軟正黑體;
+		font-size: 12px;
+
+	}
+
+	.revert{
+		font-size: 9px;
+	} 
+
+	.ready_table{		
+		width: 280px;
+		margin-left: 15px;
+	}
+
+ }
+
+ @media (max-width: 414px) {
+
+ 	.aa{
+
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items:center;
+ 		justify-content: center;
+ 		margin: 10px; 		
+ 	} 	
+
+ 	.intro{
+		width: 170px;
+	}
+
+	.shad{
+		margin-left: 30px;
+	}
+
+	.shad_01{
+		margin-left: 30px;
+	}
+
+	.shad_02{
+		margin-left: 30px;
+	}
+
+	.ready_table{		
+		width: 300px;
+	}
+	
+}
+
+
+ @media (min-width: 993px)and (max-width: 1199px) {
+
+ 	.aa{
+
+ 		display: flex;
+ 		flex-direction: column;
+ 		align-items:center;
+ 		justify-content: center;
+ 		margin: 30px; 		
+ 	} 	
+
+ 	.intro{
+		width: 200px;
+	}
+
+	.shad{
+		margin-left: 30px;
+	}
+
+	.shad_01{
+		margin-left: 30px;
+	}
+
+	.shad_02{
+		margin-left: 30px;
+	}
+	
+}
+
+
+
+@media (max-width: 575px) {
+
+	.quite_info{
+		border-radius: 5px;
+		padding-top: 20px;		
+	}
+
+}
+
+
+	
+
+
+	
+	
+ 

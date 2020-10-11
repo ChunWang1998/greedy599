@@ -1,0 +1,399 @@
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics rrrrrrrr-->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154888716-1"></script>	
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!--Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-functions.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ <!-- AOS animate -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+<!-- Customized css -->
+<link href="./main.css" rel="stylesheet">
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<!-- Web3 -->
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+
+<link rel="icon" href="https://upload.cc/i1/2019/12/19/xMeFIq.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://upload.cc/i1/2019/12/19/xMeFIq.png" type="image/x-icon">
+
+
+
+	<title> Webinvest </title>
+
+</head>
+<body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" data-gr-c-s-loaded="true">
+<!-- navbar -->
+	<section>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div>	
+	  <a class="navbar-brand" href="./index.html" style="margin-left: 30px; margin-right: 10px;">
+	  	<img src="https://upload.cc/i1/2019/12/19/xMeFIq.png" width="35" height="35" alt="">	  	
+	  </a>
+	  <a class="navbar-brand" href="./index.html">
+	  	<h5 style="margin-top: 8px;"> WebInvest </h5>	  	
+	  </a>
+	  </div>
+
+	</nav>
+	</section>
+<!-- content -->	
+	<section>	
+		<div class="container">
+		  <div class="row">
+		    <div class="col-lg-7">
+		      <div class="card distant ">				  
+				  <div class="card-body text-center ">
+				    <blockquote class="blockquote mb-0 column">
+				      <div class="ETH-LOGO "></div>				      	
+				      <div class="card_p">
+				      	<p><span id="Interest_number">0.0164%</span> 日利率</p>				      	
+				      </div> 
+				      <label class="field a-field a-field_a2 page__field table_distant">
+                         <div class="input-group mb-3" id="ticket" data-price="141">
+							<input type="text" class="form-control quantity" placeholder="輸入枚數" aria-label="Recipient's username" aria-describedby="basic-addon2">							 
+							<div class="input-group-append">
+							   <span class="input-group-text" id="basic-addon2">ETH</span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-whatever="@mdo" id="comfirm">投資</button>
+							</div>																			
+						 </div>	
+						 <div class="ETH_price text-left"><p>匯率 : <span id="total">278.97</span> USD</p></div>
+						 <div class="ETH_price text-left"><p>我的餘額 : <span id="balance_info"></span>  ETH <span id="Insufficient_balance">餘額不足</span></p></div>
+						 <div class="ETH_price text-left"><p>依照當前的利息，一年後你將獲得的利息約為 <span id="key_show_interest">0.0000</span> ETH </p></div>	 
+                       </label>  
+					   <table class="table table-sm table_distant text-left">							 
+							<tbody>
+								  <tr>
+								   <th scope="row" style="padding-left: 30px;" >參與人數</th>
+								   <td id="count">0</td>							      						     
+								 </tr>
+								 
+								 <tr>
+								   <th scope="row" style="padding-left: 30px;" >合約餘額</th>
+								   <td ><span id="total_balance">0.00108</span> ETH</td>						      						     
+								 </tr> 	
+								 <tr>
+								   <th scope="row">投資人(你的地址)</th>								   
+								   <td id="show_address"> </td>						     
+								 </tr>
+								 <tr>
+								   <th scope="row">年化利率</th>
+								   <td id="profit_year">5.99%</td>							      						     
+								 </tr>
+								  <tr>
+								   <th scope="row">退出手續費</th>
+								   <td id="quite_fee">1%</td>							      						     
+								 </tr>							   
+							</tbody>
+					   </table>				      
+				    </blockquote>				    
+				  </div>				 
+				</div>   
+		    </div>
+		    <div class="col-sm">
+		    	<ul class="nav nav-tabs distant_01" id="myTab" role="tablist">
+					<li class="nav-item">
+					  <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">說明</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link active show" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">我的資訊</a>
+					</li>					
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade aos-init aos-animate" id="home" role="tabpanel" aria-labelledby="home-tab" data-aos="fade-up">
+						<div class="user_info">
+							<ul>
+								<li> <p>投入的ETH，每日會按照投入的本金發放相對應的利息。</p></li>
+								<li> <p>利息會直接打回錢包。</p></li>	
+								<li> <p>可隨時退出，退出可拿回部分本金。</p></li>
+								<li> <p>退出拿回的本金比會按照ETH行情調整。</p></li>
+								<li> <p id="smart_contract"><a href="https://etherscan.io/address/0x1234c5B2898CCc07b8aB5AC411225f071cA9d345">合約地址</a></p></li>													
+							</ul>
+						</div>
+						<div class="user_info">
+							<div class="column-left">								
+								<div class="row align-items-center aa" style="margin: 20px;">
+									<img class="shad_01" src="https://upload.cc/i1/2019/12/20/hC7U3c.png" style="margin-right: 35px;">
+									<div class="column-left aa">
+										<h5>簡單</h5>
+										<p class="intro">介面簡潔乾淨，操作簡單，一鍵投資，一鍵退出。</p>										
+									</div>
+								</div>
+								<div class="row align-items-center aa" style="margin: 20px;">
+									<img class="shad_02" src="https://upload.cc/i1/2019/12/20/qjTo2A.png" style="margin-right: 35px;">
+									<div class="column-left aa">
+										<h5>開放</h5>
+										<p class="intro">區塊鏈上的資料在<span id="etherscan"></span>上都查詢的到，包括交易紀錄，交易枚數以及交易時間</p>			
+									</div>
+								</div>
+							</div>							
+						</div>																
+					</div>
+					
+					<div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+						<div class="container-fluid user_info none_user">											
+						  <p><span id="already_quite">您目前尚未投資。</span></p>				  
+    					  <table class="table table-sm table_distant text-left">							 
+						    <tbody>								
+								<tr>
+								   <th scope="row"><p>錢包連線狀態:</p></th>
+								   <td class="row align-items-center">								   		
+								   	 <div class="connect" style="background-color: rgb(106, 183, 106);"></div>
+								   	 <div class="connect_P" id="link_sucess">已連結</div>							   			
+								   </td>				      						     
+								</tr>																						   
+							</tbody>
+					   	  </table> 				   				
+						</div>	
+						<div class="container-fluid user_info investor_info">												
+						  <p>我的地址：</p><div class="info" id="my_address"></div><p></p>
+						  <p>我的餘額：<span class="info" id="my_balance"></span>ETH</p>  
+    					  <table class="table table-sm table_distant text-left">							 
+						    <tbody>
+								<tr>
+								   <th scope="row"><p>投入本金:</p></th>
+								   <td><p><span class="info" id="capital"></span> ETH</p></td>						      						  
+								</tr>
+								<tr>
+								   <th scope="row"><p>利息：</p></th>
+								   <td><p><span class="info" id="user_interest"></span> 日利率 </p></td>							      			
+								</tr>	
+								<tr>
+								   <th scope="row"><p>累積利息:</p></th>
+								   <td><p><span class="info" id="profit"></span> ETH</p></td>				      						     
+								</tr>
+								<tr>
+								   <th scope="row"><p>區塊高度:</p></th>
+								   <td><p><span class="info" id="block_height"></span></p></td>				      						     
+								</tr>
+								<tr>
+								   <th scope="row"><p>我的推薦人:</p></th>
+								   <td><p class="info_propose"><span id="my_propose"></span></p></td>
+								</tr>
+								<tr>
+								   <th scope="row"><p>錢包連線狀態:</p></th>
+								   <td class="row align-items-center">								   		
+								   	 <div class="connect" style="background-color: rgb(106, 183, 106);"></div>
+								   	 <div class="connect_P" id="connect">已連結</div>							   			
+								   </td>				      						     
+								</tr>																						   
+							</tbody>
+					   	  </table> 					   	
+    					  <div><p>交易完成時間:<span class="info" id="time"></span></p></div>						
+						</div>
+						
+						<div class="row quite_info sible">
+							<div class="container">
+							  <div class="row align-items-center">
+							    <div class="col-sm text-center ">
+							      <button type="button" class="btn btn-danger" onclick="quite();">我要退出</button>	
+							    </div>
+							    <div class="col-sm text-left">
+							      <p class="revert">目前退出扣除的金額為: <span id="de_capital" style="font-weight:bold;"></span> ETH</p>
+							      <p class="revert">您將會拿回: <span id="de_capital_02" style="font-weight:bold;"></span> ETH</p>		
+							    </div>
+							  </div>				  
+							</div>						
+						</div>																		
+					</div>
+				</div>
+		    </div>		    
+		  </div>
+		</div>				
+	</section>
+	<section>
+	<div class="loading">
+		<div class="loader loader--style8" title="7" style="display: none;">
+		  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		    <rect x="0" y="9.17895" width="4" height="11.6421" fill="#333" opacity="0.2">
+		      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+		    </rect>
+		    <rect x="8" y="6.67895" width="4" height="16.6421" fill="#333" opacity="0.2">
+		      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+		    </rect>
+		    <rect x="16" y="5.82105" width="4" height="18.3579" fill="#333" opacity="0.2">
+		      <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+		      <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+		    </rect>
+		  </svg>
+		</div>
+	</div>
+	</section>
+	<section>
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	  	<div class="modal-content redundant">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="color: #ef4747;">這組地址已經使用過</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">×</span>
+	        </button>
+      	  </div>      	  	
+	      <div class="modal-body">
+	        <p> 您的這組 <span id="redundant_user"></span> 地址已經使用過，如果需要再投資，請新建一組帳號。</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>	        
+	      </div>
+	    </div>
+	    <div class="modal-content no_duplication">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">我的方案</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">×</span>
+	        </button>
+      	  </div>
+	      <div class="modal-body">
+	        <form>
+	          	<div class="form-group">
+	          	<table class="table  table-borderless table_distant text-left d-flex justify-content-center ready_table">
+				  <tbody>
+				  	<tr>
+				      <th scope="row"><p>投資人(投資地址) : </p></th>
+				      <td><p class="investor_address"><span id="investor_address"></span></p></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"><p>投資枚數 : </p></th>
+				      <td><p><span id="ready_volume">0.565461</span> ETH </p></td>
+				    </tr>
+				    <tr>
+				      <th scope="row"><p>日利率 : </p></th>
+				      <td><p><span id="ready_interest"></span></p></td>     
+				    </tr>
+				    <tr>
+				      <th scope="row"><p>年化利率 : </p></th>
+				      <td colspan="2"><p><span id="ready_year"></span></p></td>   
+				    </tr>
+				  </tbody>
+				</table>
+				<div>
+				 	<p style="margin-left: 22px; margin-right: 30px; color: #747579;">依照當前的利息，一年後你將獲得的利息約為<span id="key_show_interest_02"> 0.0000</span>。
+				 	</p>	  
+				</div>
+				<div style="margin-left: 22px; margin-right: 30px;">	 
+		            <p>
+					  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+					    填寫我的推薦人
+					  </a>				 
+					</p>				
+					<div class="collapse" id="collapseExample">
+					  <div>
+					   	<input type="text" class="form-control propose" id="recipient-name" placeholder=" EX : 0xbc1ADfF2EAC8dbA22d382DFADDf7e6B73aBC2334">
+					  </div>
+					</div>
+				</div>         	
+	          </div>	          
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-primary" id="invest">投資</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
+	</section>	
+	<footer class="page-footer font-small indigo py-4">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 foot_font ETH_price text-left foot_time">
+        	<p>網站更新時間 : <span id="update_time">Wed Feb 19 2020 14:53:31 GMT+0800 (台北標準時間)</span></p>        	
+        </div>         
+    </footer>    
+<!------------------------------------------------------------------------------------------------------------------------------------------>
+    <!-- Program Modal Form -->
+        <form class="form-inline my-2 my-lg-0 ml-5" action="" method="">
+          <div class="modal fade bd-example-modal-sm" id="modalInvestForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+              <div class="modal-content alert_info">
+	                <div class="modal-header text-center">
+	                  <h2 class="modal-title w-100 font-weight-bold" style="color:#627eea; font-size: 25px;">連結錢包</h2>
+	                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">×</span>
+	                  </button>
+	                </div>	                	            	             
+		            <div class="container  wallet_card">		            
+						 <div class="card " style="width: 18rem; margin-top: 30px; margin-bottom: 30px; ">	  
+						  <div class="card-body text-center " style="background-color: #f8f9fa; overflow: hidden;">
+						    <h5 class="card-title">取得錢包</h5>						   
+						  </div>
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item ">
+						    	<a class="navbar-brand li_icon" href="https://metamask.io/">
+								  <img src="https://metamask.io/img/metamask.png" width="30" height="30" alt="">				 	
+								</a>								
+								<a href="https://metamask.io/" target="blank()">Metamask</a>
+						    </li>
+						    <li class="list-group-item">
+						    	<a class="navbar-brand li_icon" href="https://trustwallet.com/">
+								  <img src="https://cdn6.aptoide.com/imgs/b/4/e/b4e4d31bc656f0e5b80b9ebf8fa8361f_icon.png?w=240" width="30" height="30" alt="">	  	
+								</a>
+								<a href="https://trustwallet.com/" target="blank()">TrustWallet</a>
+						    </li>
+						    <li class="list-group-item">
+						    	<a class="navbar-brand li_icon" href="https://status.im/">
+								  <img src="https://cdn.freebiesupply.com/logos/large/2x/status-2-logo-png-transparent.png" width="30" height="30" alt="">	  	
+								</a>
+								<a href="https://status.im/" target="blank()">status</a>
+						    </li>
+						    <li class="list-group-item">
+						    	<a class="navbar-brand li_icon" href="https://www.parity.io/">
+								  <img src="https://www.parity.io/content/images/2018/09/og_image-3-1.png" width="30" height="30" alt="">	  	
+								</a>
+								<a href="https://www.parity.io/" target="blank()">parity</a>
+						    </li>
+						    <li class="list-group-item">
+						    	<a class="navbar-brand li_icon" href="https://token.im/">
+								  <img src="https://upload.cc/i1/2019/12/16/ZUeEpu.png" width="30" height="30" alt="">	  	
+								</a>
+								<a href="https://token.im/" target="blank()">imToken</a>
+						    </li>
+						  </ul>						 
+						</div>
+					</div>					    
+		      </div>
+            </div>
+          </div>             
+        </form> 
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ 
+<!-- Customized js -->
+<script src="./main.js"></script>
+
+<script>
+var firebaseConfig = {
+  apiKey: "AIzaSyDmhPwwAyKPg8ML3IszyWZ8QHShjLsb-24",
+  authDomain: "greedy599-3b60b.firebaseapp.com",
+  databaseURL: "https://greedy599-3b60b.firebaseio.com",
+  projectId: "greedy599-3b60b",
+  storageBucket: "greedy599-3b60b.appspot.com",
+  messagingSenderId: "969129892133",
+  appId: "1:969129892133:web:99a03483249edd8eb2a2cc",
+  measurementId: "G-Z78Z5T1MPM"
+};
+</script>
+</body></html>
