@@ -7,7 +7,7 @@
 $(document).ready(function(){
     $.ajax({
         method:"GET",
-        url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
+        //url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
       }).done(function(msg) {   
         console.log(msg);
         var ETH_price = (msg[0].price_usd);
