@@ -5,16 +5,16 @@ AOS.init();
 $(document).ready(function () {
   $.ajax({
     method: "GET",
-    url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
+    //url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
   }).done(function (msg) {
     var ETH_price = (msg[0].price_usd);
-    console.log(ETH_price);
+    // console.log(ETH_price);
     var updatedtime = (msg[0].last_updated);
     var unixTimestamp = new Date(parseInt(updatedtime) * 1000);
 
     $("#update_time").text(unixTimestamp);
 
-    $("#total").text(toPercent(ETH_price));
+    // $("#total").text(toPercent(ETH_price));
 
     $('#ticket').on('keyup', '.quantity', function () {
       var quantity = $(this).val();
