@@ -1,15 +1,14 @@
 
 //AOS animate
 AOS.init();
-//0507
-// get ETH info
 
 $(document).ready(function () {
   $.ajax({
     method: "GET",
-    //url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
+    url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
   }).done(function (msg) {
     var ETH_price = (msg[0].price_usd);
+    console.log(ETH_price);
     var updatedtime = (msg[0].last_updated);
     var unixTimestamp = new Date(parseInt(updatedtime) * 1000);
 
@@ -21,40 +20,12 @@ $(document).ready(function () {
       var quantity = $(this).val();
       $("#total").text(toPercent(ETH_price * quantity));
     })
-
   });
 })
 
 // set point
 function toPercent(point) {
-  var str = Number(point).toFixed(2);
-  return str;
-}
-
-function toPercent_A(point) {
-  var str = Number(point).toFixed(5);
-  return str;
-}
-
-function toPercent_B(point) {
   var str = Number(point).toFixed(4);
-  return str;
-}
-
-function toPercent_C(point) {
-  var str = Number(point).toFixed(7);
-  return str;
-}
-
-function toPercent_01(point) {
-  var str = Number(point * 100).toFixed(2);
-  str += "%";
-  return str;
-}
-
-function toPercent_02(point) {
-  var str = Number(point * 100).toFixed(4);
-  str += "%";
   return str;
 }
 
@@ -95,8 +66,8 @@ async function printPostsToConsole() {
   $("#show_address").text(replace_part);
 
   $("#redundant_user").text(coinbase);
-  $("#my_balance").text(toPercent_A(web3.utils.fromWei(balance)));
-  $("#balance_info").text(toPercent_A(web3.utils.fromWei(balance)));  //wei 轉換成 ether web3.utils.fromWei() 
+  $("#my_balance").text(toPercent(web3.utils.fromWei(balance)));
+  $("#balance_info").text(toPercent(web3.utils.fromWei(balance)));  //wei 轉換成 ether web3.utils.fromWei() 
 
   contract_address = "0x20f5AfA741c57Edf740A53d7889d9b2C9dB43023";
   var contract_abi =
@@ -106,21 +77,20 @@ async function printPostsToConsole() {
 
   //取得合約餘額 
   var balance_contract = await web3.eth.getBalance(contract_address);
-  $("#total_balance").text(toPercent_A(web3.utils.fromWei(balance_contract)));
+  $("#total_balance").text(toPercent(web3.utils.fromWei(balance_contract)));
 
-  Interest = await myContract.methods.interest().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
+  Interest = await myContract.methods.interest().call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
 
-  $("#Interest_number").text(toPercent_02(1 / Interest));
-  $("#profit_year").text(toPercent_01((1 / Interest) * 365));
-  $("#ready_interest").text(toPercent_02(1 / Interest));
-  $("#ready_year").text(toPercent_01((1 / Interest) * 365));
+  $("#Interest_number").text(toPercent(1 / Interest)+"%");
+  $("#profit_year").text(toPercent((1 / Interest) * 365)+"%");
+  $("#ready_interest").text(toPercent(1 / Interest)+"%");
+  $("#ready_year").text(toPercent((1 / Interest) * 365)+"%");
 
-  var count = await myContract.methods.people_number().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
+  var count = await myContract.methods.people_number().call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
   $("#count").text(count);
 
-  var user_info = await myContract.methods.userinfo(coinbase).call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
-  $("#capital").text(web3.utils.fromWei(user_info[1]));
-  //$("#user_interest").text(toPercent_01(1/user_info[1]));     
+  var user_info = await myContract.methods.userinfo(coinbase).call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
+  $("#capital").text(web3.utils.fromWei(user_info[1])); 
   block_height = user_info[2];
   var unixTimestamp = new Date(parseInt(user_info[3]) * 1000);
   $("#time").text(unixTimestamp);
@@ -135,13 +105,13 @@ async function printPostsToConsole() {
   $(".redundant").css("display", "none");
   $(".no_duplication").css("visibility ", "visible");
 
-  //var quite_user= await myContract.methods.quite_user(coinbase).call({from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'});      
+  //var quite_user= await myContract.methods.quite_user(coinbase).call({from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf'});      
   //if(quite_user != "0x0000000000000000000000000000000000000000"){
   //    $("#already_quite").text("您的這組帳號目前已退出，為保障眾多投資者權益，如果您要再投資，請新建錢包地址。");
   //}
 
-  var son = await myContract.methods.son().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
-  var mon = await myContract.methods.mon().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
+  var son = await myContract.methods.son().call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
+  var mon = await myContract.methods.mon().call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
 
   var dt = new Date();
   var gethour = dt.getHours();
@@ -151,9 +121,9 @@ async function printPostsToConsole() {
     distribute();
   }
 
-  var totalInvestoken = await myContract.methods.Total_investorToken(coinbase).call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
+  var totalInvestoken = await myContract.methods.Total_investorToken(coinbase).call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
 
-  $("#quite_fee").text(toPercent_01(1 - (son / mon)));
+  $("#quite_fee").text(toPercent(1 - (son / mon))+"%");
 
   var ou = web3.utils.fromWei(user_info[1]);
   var t = web3.utils.fromWei(totalInvestoken);
@@ -161,9 +131,8 @@ async function printPostsToConsole() {
   $("#de_capital").text(out * (1 - (son / mon)));
   $("#de_capital_02").text(out * ((son / mon)));
 
-  var Dividing_time = await myContract.methods.Dividing_times(coinbase).call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
-  console.log(Dividing_time);
-  $("#profit").text(toPercent_C(parseInt(Dividing_time) * parseFloat(web3.utils.fromWei(user_info[1])) * parseFloat(1 / Interest)));
+  var Dividing_time = await myContract.methods.Dividing_times(coinbase).call({ from: '0x8CE6aC2AE2dDBc6B35156220f6fF1917f6Ca6dcf' });
+  $("#profit").text(toPercent(parseInt(Dividing_time) * parseFloat(web3.utils.fromWei(user_info[1])) * parseFloat(1 / Interest)));
 };
 
 printPostsToConsole();
@@ -174,6 +143,7 @@ function quite() {
     location.reload();
   });
 }
+
 function distribute() {
   myContract.methods.distribute().send({ from: coinbase }).then(function (receipt) {
     location.reload();
@@ -238,8 +208,8 @@ gtag('config', 'UA-154888716-1');
 $(document).ready(function () {
   $('#ticket').on('keyup', '.quantity', function () {
     var quantity = $(this).val();
-    $("#key_show_interest").text(toPercent_B(quantity * (1 / Interest) * 365));
-    $("#key_show_interest_02").text(toPercent_B(quantity * (1 / Interest) * 365));
+    $("#key_show_interest").text(toPercent(quantity * (1 / Interest) * 365));
+    $("#key_show_interest_02").text(toPercent(quantity * (1 / Interest) * 365));
 
     if (quantity * 1000000000000000000 < balance) {
       $("#Insufficient_balance").css("visibility", "hidden")
@@ -249,15 +219,3 @@ $(document).ready(function () {
 
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
