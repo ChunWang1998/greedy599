@@ -12,7 +12,6 @@ contract DistributeTokens {
     uint256 public people_number = 0;
     uint256 public whole_investors_number = 0;
 
-    //!!
     mapping(address => uint256) public Dividing_times;
 
     constructor() public {
@@ -79,7 +78,6 @@ contract DistributeTokens {
     }
 
     function quit() public {
-        //!!
         msg.sender.transfer(
             ((Total_investorToken[msg.sender] +
                 interest *

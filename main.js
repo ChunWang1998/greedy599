@@ -9,21 +9,21 @@ $(document).ready(function () {
     method: "GET",
     //url: "https://api.coinmarketcap.com/v1/ticker/ethereum/",        
   }).done(function (msg) {
-    console.log(msg);
     var ETH_price = (msg[0].price_usd);
     var updatedtime = (msg[0].last_updated);
     var unixTimestamp = new Date(parseInt(updatedtime) * 1000);
+
     $("#update_time").text(unixTimestamp);
+
     $("#total").text(toPercent(ETH_price));
 
     $('#ticket').on('keyup', '.quantity', function () {
       var quantity = $(this).val();
       $("#total").text(toPercent(ETH_price * quantity));
     })
+
   });
 })
-
-
 
 // set point
 function toPercent(point) {
@@ -58,10 +58,9 @@ function toPercent_02(point) {
   return str;
 }
 
-
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
-  window.ethereum.enable();///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  window.ethereum.enable();
   console.log("Web3連接成功");
   $(".connect").css("background-color", "#6ab76a");
   $("#connect").text("已連結");
@@ -105,7 +104,6 @@ async function printPostsToConsole() {
   contract_ad();
   myContract = new web3.eth.Contract(contract_abi, contract_address);
 
-
   //取得合約餘額 
   var balance_contract = await web3.eth.getBalance(contract_address);
   $("#total_balance").text(toPercent_A(web3.utils.fromWei(balance_contract)));
@@ -134,21 +132,6 @@ async function printPostsToConsole() {
     $(".none_user").css("display", "none");
   }
 
-  //var propose = await myContract.methods.propose(coinbase).call({from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'});
-  //$("#my_propose").text("Here!!!!!!");
-
-
-
-  /*
-var repeat = await myContract.methods.verification(coinbase).call({from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'});
-  if( repeat != "0x0000000000000000000000000000000000000000" ){
-    $(".redundant").css("visibility ","visible");
-    $(".no_duplication").css("display","none");
-  }else{
-    
-  }
-*/
-  // in else
   $(".redundant").css("display", "none");
   $(".no_duplication").css("visibility ", "visible");
 
@@ -160,23 +143,17 @@ var repeat = await myContract.methods.verification(coinbase).call({from: '0xde0B
   var son = await myContract.methods.son().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
   var mon = await myContract.methods.mon().call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
 
-  //////!!!
-
-
-
   var dt = new Date();
   var gethour = dt.getHours();
   var getminute = dt.getMinutes();
-  var getseconde = dt.getSeconds();
+
   if (gethour == 12 && getminute == 0 && getSecond == 0) {
     distribute();
   }
 
   var totalInvestoken = await myContract.methods.Total_investorToken(coinbase).call({ from: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe' });
 
-  /////////  
   $("#quite_fee").text(toPercent_01(1 - (son / mon)));
-
 
   var ou = web3.utils.fromWei(user_info[1]);
   var t = web3.utils.fromWei(totalInvestoken);
@@ -204,13 +181,11 @@ function distribute() {
 }
 
 //監聽確認購買的金額、枚數
-
 var comfirm = document.querySelector('#comfirm');
 comfirm.addEventListener("click", function (e) {
   e.preventDefault();
   var count = document.querySelector('.quantity').value;
   $("#ready_volume").text(count);
-
 })
 
 //input接收輸入的值，並傳到錢包
@@ -230,14 +205,6 @@ function invest(volume) {
     location.reload();
   });
 }
-/*
-    //推薦人
-    function recommend(recommended){
-      myContract.methods.recommend(recommended).send({from: coinbase}).then(function(receipt){          
-        location.reload();
-      });
-    }
-*/
 
 //取得合約地址並轉成連結
 function contract_ad() {
@@ -250,9 +217,6 @@ function contract_ad() {
   document.getElementById("etherscan").innerHTML = result_02;
 }
 
-
-
-
 //將鏈上捉到的區塊高度加入連結參數，並轉成連結
 function block_link() {
   var str = block_height;
@@ -260,20 +224,15 @@ function block_link() {
   document.getElementById("block_height").innerHTML = result;
 }
 
-
 function myload() {
   $(".loader").fadeOut(3000);
 }
 window.onload = myload;
 
-
-// Global site tag (gtag.js) - Google Analytics 
-
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'UA-154888716-1');
-
 
 //快速檢視輸入的本金所輸出的年利息，查詢餘額是否足夠  
 $(document).ready(function () {
@@ -281,8 +240,6 @@ $(document).ready(function () {
     var quantity = $(this).val();
     $("#key_show_interest").text(toPercent_B(quantity * (1 / Interest) * 365));
     $("#key_show_interest_02").text(toPercent_B(quantity * (1 / Interest) * 365));
-
-    console.log(balance);
 
     if (quantity * 1000000000000000000 < balance) {
       $("#Insufficient_balance").css("visibility", "hidden")
